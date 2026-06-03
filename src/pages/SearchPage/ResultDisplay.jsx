@@ -1,4 +1,4 @@
-import { XCircle, PartyPopper, UserRoundCheck, ChartColumn } from "lucide-react";
+import { XCircle, PartyPopper, UserRoundCheck, ChartColumn, NotebookPen } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function ResultDisplay({ result }) {
@@ -197,6 +197,18 @@ export default function ResultDisplay({ result }) {
                             </span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div className="mt-5 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden text-slate-700">
+                <div className=" px-4 md:px-8 py-2 md:py-4 flex sm:flex-row items-center gap-1 md:gap-2">
+
+                    <span className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white shadow-md shadow-blue-600/20">
+                        <NotebookPen size={16} />
+                    </span>
+                    <span className="text-slate-600 md:text-sm ">
+                        Thời gian nhận đơn phúc khảo đến trước 11:00 ngày 04/06/2026 <br /> Tại phòng <strong> Giáo vụ</strong> trường THCS và THPT Tây Nguyên
+                    </span>
                 </div>
             </div>
         </motion.div>
