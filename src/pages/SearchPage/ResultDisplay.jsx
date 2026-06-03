@@ -1,7 +1,11 @@
-import { XCircle, PartyPopper, UserRoundCheck, ChartColumn, NotebookPen } from "lucide-react";
+import { UserRoundCheck, ChartColumn, NotebookPen } from "lucide-react";
 import { motion } from "motion/react";
+import ModalCongratulation from "./ModalCongratulation";
+import { useState } from "react";
 
 export default function ResultDisplay({ result }) {
+
+    const [showModal, setShowModal] = useState(true);
 
     const currentDate = new Date(result.updatedAt || new Date()).toLocaleDateString("vi-VN", {
         day: "2-digit",
@@ -44,45 +48,20 @@ export default function ResultDisplay({ result }) {
     };
 
     // Render Kết quả
-    const renderResultRow = () => {
-        return (
-            <div className="flex sm:flex-row  p-2 sm:pb-3 items-center justify-between">
-                <span className="sm:w-1/3 text-slate-500 text-xs md:text-sm">
-                    Kết quả:
-                </span>
+    const renderSuccessBadge = () => {
+        return <>
+            <button className="cursor-pointer inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full text-xs shadow-sm tracking-wide bg-emerald-600 text-white hover:bg-emerald-700" onClick={() => setShowModal(true)}>
+                Bấm xem
+            </button>
+            <ModalCongratulation isOpen={showModal} onClose={() => setShowModal(false)} candidate={result} candidate={result} />
+        </>
+    }
 
-                <div className="sm:w-2/3 flex items-center gap-2">
-                    {result.isPass === true ? (
-                        renderStatusBadge()
-                    ) : result.isPass === false ? (
-                        renderStatusBadge()
-                    ) : (
-                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-amber-50 text-amber-600 border border-amber-200 text-xs font-semibold">
-                            Chưa công bố
-                        </span>
-                    )}
-                </div>
+    const renderFailureBadge = () => {
+        return (
+            <div className="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full text-xs shadow-sm tracking-wide bg-slate-200 text-slate-600 border border-slate-300">
+                Chưa trúng tuyển
             </div>
-        );
-    };
-    // 🎯 STATUS (chỉ dùng khi đã công bố)
-    const renderStatusBadge = () => {
-        const status = result.isPass;
-
-        if (status === true) {
-            return (
-                <span className="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full font-bold text-xs md:text-sm shadow-sm tracking-wide transition-all duration-200 ease-out bg-emerald-600 text-white hover:-translate-y-0.5 hover:shadow-lg cursor-pointer">
-                    TRÚNG TUYỂN
-                    <PartyPopper size={16} />
-                </span>
-            );
-        }
-
-        return (
-            <span className="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full text-xs shadow-sm tracking-wide bg-rose-100 text-rose-600 border border-rose-200">
-                KHÔNG TRÚNG TUYỂN
-                <XCircle size={16} />
-            </span>
         );
     };
 
@@ -132,8 +111,30 @@ export default function ResultDisplay({ result }) {
                             <span className="sm:w-2/3 font-medium text-slate-700 text-sm md:text-base">{result.sbd}</span>
                         </div>
 
-                        {/* 🔥 KẾT QUẢ */}
-                        {renderResultRow()}
+                        <div className="flex sm:flex-row  p-2 sm:pb-3 items-center justify-between">
+                            <span className="sm:w-1/3 text-slate-500 text-xs md:text-sm">
+                                Kết quả:
+                            </span>
+
+                            <div className="sm:w-2/3 flex items-center gap-2">
+                                {result.isPass === true ? (
+                                    renderSuccessBadge()
+                                ) : result.isPass === false ? (
+                                    renderFailureBadge()
+                                ) : (
+                                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-amber-50 text-amber-600 border border-amber-200 text-xs font-semibold">
+                                        Chưa công bố
+                                    </span>
+                                )}
+                            </div>
+
+
+                        </div>
+                        {result.isPass === false && (
+                            <p className="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-lg bg-amber-50 border border-amber-100 shadow-sm tracking-wide text-amber-700 text-sm ">
+                                Cảm ơn quý phụ huynh và học sinh đã quan tâm, tin tưởng Nhà trường!
+                            </p>
+                        )}
                     </div>
 
                     {/* SCORE */}
