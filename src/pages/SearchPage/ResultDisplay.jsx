@@ -201,14 +201,16 @@ export default function ResultDisplay({ result }) {
             </div>
 
             <div className="mt-5 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden text-slate-700">
-                <div className=" px-4 md:px-8 py-2 md:py-4 flex sm:flex-row items-center gap-1 md:gap-2">
-
-                    <span className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white shadow-md shadow-blue-600/20">
-                        <NotebookPen size={16} />
-                    </span>
-                    <span className="text-slate-600 md:text-sm ">
-                        Thời gian nhận đơn phúc khảo đến trước 11:00 ngày 04/06/2026 <br /> Tại phòng <strong> Giáo vụ</strong> trường THCS và THPT Tây Nguyên
-                    </span>
+                <div className=" px-4 md:px-8 py-2 md:py-4 ">
+                    <h2 className="text-base md:text-lg font-bold text-slate-800 mb-2 md:mb-4 flex items-center gap-2">
+                        <span className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white shadow-md shadow-blue-600/20">
+                            <NotebookPen size={16} />
+                        </span>
+                        Phúc khảo
+                    </h2>
+                    <div className="text-slate-500 text-sm text-justify w-full">
+                        Thời gian nhận đơn phúc khảo đến trước <strong className="text-black">11:00 ngày 04/06/2026</strong>, tại phòng <strong className="text-black"> GIÁO VỤ</strong> trường THCS và THPT Tây Nguyên.
+                    </div>
                 </div>
             </div>
         </motion.div>
