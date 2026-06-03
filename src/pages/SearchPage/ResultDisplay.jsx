@@ -209,7 +209,7 @@ export default function ResultDisplay({ result }) {
                 </div>
                 <div className="px-4 py-2 md:px-8 md:py-4 text-justify">
                     <span className="text-slate-700 text-sm">
-                        Thời gian nhận đơn phúc khảo đến trước <strong className="text-black">11:00 ngày 04/06/2026</strong>, tại phòng <strong className="text-black"> GIÁO VỤ</strong> trường THCS và THPT Tây Nguyên.
+                        Thời gian nhận đơn phúc khảo đến trước <strong className="text-black">11:00 ngày 04/06/2026</strong>, trực tiếp tại phòng <strong className="text-black"> GIÁO VỤ</strong> trường THCS và THPT Tây Nguyên.
                     </span>
                 </div>
             </div>
